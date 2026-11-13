@@ -1,0 +1,300 @@
+{
+  "config": {
+    "datasets": [
+      "breastmnist",
+      "pneumoniamnist"
+    ],
+    "image_size": 28,
+    "epochs": 40,
+    "batch_size": 64,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 8,
+    "min_epochs": 5,
+    "cost_fn": 5.0,
+    "cost_fp": 1.0,
+    "coverage_target": 0.8,
+    "shift_levels": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "mmd_batch": 50,
+    "mmd_ref_max": 200,
+    "mmd_trials": 20,
+    "mmd_perms": 100,
+    "alpha": 0.05,
+    "seed": 0,
+    "data_root": "./data",
+    "out_dir": "./results"
+  },
+  "results": {
+    "breastmnist": {
+      "dataset": "breastmnist",
+      "positive_class": "malignant",
+      "synthetic_data": false,
+      "n": {
+        "train": 546,
+        "val": 78,
+        "test": 156
+      },
+      "cnn": {
+        "epochs_run": 40,
+        "best_val_auc": 0.9256474519632414,
+        "platt_a": 1.403074938592164,
+        "platt_b": -0.056862057082765226
+      },
+      "thresholds": {
+        "default": 0.5,
+        "cost_optimal_theory": 0.16666666666666666,
+        "tuned_on_validation": 0.2
+      },
+      "test_metrics": {
+        "Logistic regression @0.5": {
+          "threshold": 0.5,
+          "sensitivity": 0.42857142857142855,
+          "specificity": 0.9298245614035088,
+          "accuracy": 0.7948717948717948,
+          "FN": 24,
+          "FP": 8,
+          "cost_per_case": 0.8205128205128205,
+          "auc": 0.8281119465329992,
+          "brier": 0.14486378000907715,
+          "ece": 0.08900434678655139
+        },
+        "CNN @0.5 (uncalibrated)": {
+          "threshold": 0.5,
+          "sensitivity": 0.6904761904761905,
+          "specificity": 0.8947368421052632,
+          "accuracy": 0.8397435897435898,
+          "FN": 13,
+          "FP": 12,
+          "cost_per_case": 0.4935897435897436,
+          "auc": 0.8765664160401003,
+          "brier": 0.11872431260205508,
+          "ece": 0.09311578401209766
+        },
+        "CNN @0.5 (calibrated)": {
+          "threshold": 0.5,
+          "sensitivity": 0.6904761904761905,
+          "specificity": 0.9122807017543859,
+          "accuracy": 0.8525641025641025,
+          "FN": 13,
+          "FP": 10,
+          "cost_per_case": 0.4807692307692308,
+          "auc": 0.8765664160401003,
+          "brier": 0.11642081665731982,
+          "ece": 0.07324370575442352
+        },
+        "CNN @cost-optimal theory (uncalibrated)": {
+          "threshold": 0.16666666666666666,
+          "sensitivity": 0.9047619047619048,
+          "specificity": 0.5614035087719298,
+          "accuracy": 0.6538461538461539,
+          "FN": 4,
+          "FP": 50,
+          "cost_per_case": 0.44871794871794873,
+          "auc": 0.8765664160401003,
+          "brier": 0.11872431260205508,
+          "ece": 0.09311578401209766
+        },
+        "CNN @cost-optimal theory (calibrated)": {
+          "threshold": 0.16666666666666666,
+          "sensitivity": 0.8333333333333334,
+          "specificity": 0.7017543859649122,
+          "accuracy": 0.7371794871794872,
+          "FN": 7,
+          "FP": 34,
+          "cost_per_case": 0.4423076923076923,
+          "auc": 0.8765664160401003,
+          "brier": 0.11642081665731982,
+          "ece": 0.07324370575442352
+        },
+        "CNN @tuned on validation (calibrated)": {
+          "threshold": 0.2,
+          "sensitivity": 0.8333333333333334,
+          "specificity": 0.7456140350877193,
+          "accuracy": 0.7692307692307693,
+          "FN": 7,
+          "FP": 29,
+          "cost_per_case": 0.41025641025641024,
+          "auc": 0.8765664160401003,
+          "brier": 0.11642081665731982,
+          "ece": 0.07324370575442352
+        }
+      },
+      "selective_prediction": {
+        "coverage": 0.8012820512820513,
+        "deferred_cases": 31,
+        "auto_cost_per_case": 0.296,
+        "missed_positives_in_automated": 4,
+        "missed_positives_full_automation": 7
+      },
+      "shift": [
+        {
+          "level": 0,
+          "auc": 0.8765664160401003,
+          "cost_per_case": 0.41025641025641024,
+          "FN": 7,
+          "detection_rate": 0.05
+        },
+        {
+          "level": 1,
+          "auc": 0.8588137009189641,
+          "cost_per_case": 0.5833333333333334,
+          "FN": 1,
+          "detection_rate": 1.0
+        },
+        {
+          "level": 2,
+          "auc": 0.6860902255639099,
+          "cost_per_case": 0.7884615384615384,
+          "FN": 16,
+          "detection_rate": 1.0
+        },
+        {
+          "level": 3,
+          "auc": 0.4227234753550543,
+          "cost_per_case": 1.3461538461538463,
+          "FN": 42,
+          "detection_rate": 1.0
+        }
+      ],
+      "runtime_s": 24.7
+    },
+    "pneumoniamnist": {
+      "dataset": "pneumoniamnist",
+      "positive_class": "pneumonia",
+      "synthetic_data": false,
+      "n": {
+        "train": 4708,
+        "val": 524,
+        "test": 624
+      },
+      "cnn": {
+        "epochs_run": 37,
+        "best_val_auc": 0.995772636389603,
+        "platt_a": 1.2861376167615963,
+        "platt_b": -0.3238487832096282
+      },
+      "thresholds": {
+        "default": 0.5,
+        "cost_optimal_theory": 0.16666666666666666,
+        "tuned_on_validation": 0.19
+      },
+      "test_metrics": {
+        "Logistic regression @0.5": {
+          "threshold": 0.5,
+          "sensitivity": 0.982051282051282,
+          "specificity": 0.6239316239316239,
+          "accuracy": 0.8477564102564102,
+          "FN": 7,
+          "FP": 88,
+          "cost_per_case": 0.1971153846153846,
+          "auc": 0.9270984001753232,
+          "brier": 0.12025495290330099,
+          "ece": 0.13636122867951736
+        },
+        "CNN @0.5 (uncalibrated)": {
+          "threshold": 0.5,
+          "sensitivity": 0.9923076923076923,
+          "specificity": 0.5256410256410257,
+          "accuracy": 0.8173076923076923,
+          "FN": 3,
+          "FP": 111,
+          "cost_per_case": 0.20192307692307693,
+          "auc": 0.9446197676966908,
+          "brier": 0.14888784118691348,
+          "ece": 0.16956746747367724
+        },
+        "CNN @0.5 (calibrated)": {
+          "threshold": 0.5,
+          "sensitivity": 0.9897435897435898,
+          "specificity": 0.5341880341880342,
+          "accuracy": 0.8189102564102564,
+          "FN": 4,
+          "FP": 109,
+          "cost_per_case": 0.20673076923076922,
+          "auc": 0.9446197676966908,
+          "brier": 0.14740032554530075,
+          "ece": 0.1605353037977601
+        },
+        "CNN @cost-optimal theory (uncalibrated)": {
+          "threshold": 0.16666666666666666,
+          "sensitivity": 1.0,
+          "specificity": 0.3504273504273504,
+          "accuracy": 0.7564102564102564,
+          "FN": 0,
+          "FP": 152,
+          "cost_per_case": 0.24358974358974358,
+          "auc": 0.9446197676966908,
+          "brier": 0.14888784118691348,
+          "ece": 0.16956746747367724
+        },
+        "CNN @cost-optimal theory (calibrated)": {
+          "threshold": 0.16666666666666666,
+          "sensitivity": 1.0,
+          "specificity": 0.4230769230769231,
+          "accuracy": 0.7836538461538461,
+          "FN": 0,
+          "FP": 135,
+          "cost_per_case": 0.21634615384615385,
+          "auc": 0.9446197676966908,
+          "brier": 0.14740032554530075,
+          "ece": 0.1605353037977601
+        },
+        "CNN @tuned on validation (calibrated)": {
+          "threshold": 0.19,
+          "sensitivity": 1.0,
+          "specificity": 0.452991452991453,
+          "accuracy": 0.7948717948717948,
+          "FN": 0,
+          "FP": 128,
+          "cost_per_case": 0.20512820512820512,
+          "auc": 0.9446197676966908,
+          "brier": 0.14740032554530075,
+          "ece": 0.1605353037977601
+        }
+      },
+      "selective_prediction": {
+        "coverage": 0.8012820512820513,
+        "deferred_cases": 124,
+        "auto_cost_per_case": 0.138,
+        "missed_positives_in_automated": 0,
+        "missed_positives_full_automation": 0
+      },
+      "shift": [
+        {
+          "level": 0,
+          "auc": 0.9446197676966908,
+          "cost_per_case": 0.20512820512820512,
+          "FN": 0,
+          "detection_rate": 0.35
+        },
+        {
+          "level": 1,
+          "auc": 0.7954087223317993,
+          "cost_per_case": 0.7291666666666666,
+          "FN": 74,
+          "detection_rate": 1.0
+        },
+        {
+          "level": 2,
+          "auc": 0.5561691869384177,
+          "cost_per_case": 2.2323717948717947,
+          "FN": 266,
+          "detection_rate": 1.0
+        },
+        {
+          "level": 3,
+          "auc": 0.5177624369932062,
+          "cost_per_case": 0.5096153846153846,
+          "FN": 21,
+          "detection_rate": 1.0
+        }
+      ],
+      "runtime_s": 26.1
+    }
+  }
+}

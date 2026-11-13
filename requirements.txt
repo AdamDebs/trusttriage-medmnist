@@ -1,0 +1,5 @@
+torch
+medmnist>=3.0
+scikit-learn
+matplotlib
+numpy
