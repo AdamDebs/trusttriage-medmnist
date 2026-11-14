@@ -76,4 +76,4 @@ Data from MedMNIST: J. Yang et al., "MedMNIST v2 - A large-scale lightweight ben
 
 ---
 
-*AI tools were strictly used to help troubleshoot coding errors during this project. All other aspects of the project, including code, design, implementation and decision-making, were completed by me.*
+*AI tools were used throughout parts of this project to assist with coding, debugging, and understanding errors. I independently worked through the project, made the design and implementation decisions, and used AI as a support tool when needed.*
